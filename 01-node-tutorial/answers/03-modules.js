@@ -2,7 +2,7 @@
 
 const names = require('./04-names');
 const sayHi = require('./05-utils');
-const data = require('./06-alternative-flavor');
+const someOne = require('./06-alternative-flavor');
 require('./07-mind-grenade');
 
 // sayHi('susan')
@@ -10,4 +10,9 @@ require('./07-mind-grenade');
 // sayHi(names.peter)
 //console.log(data);
 
-sayHi(names.alice);
+sayHi(names);
+sayHi(names.zoe);
+sayHi(names.klara);
+console.log(names);
+console.log(names.nick);
+

@@ -1,10 +1,11 @@
 // local
 const secret = 'I am a secret!'
 // share
-const ilya = 'Ilya'
-const daniel = 'Daniel'
-const alice = 'Alice'
+const zoe = 'Zoe'
+const klara = 'Klara'
+const nick = 'Nikita'
 
-module.exports = { ilya, daniel, alice }
+module.exports = { zoe, klara, nick }
 
 //console.log(module)
+//console.log(names)

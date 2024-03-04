@@ -19,11 +19,11 @@ const server = http.createServer((req, res) => {
   // SWITCH TO IF, ELSE IF, ELSE (BELOW)
   // WE COVER THE CAUSE, LATER IN EXPRESS TUTORIAL
   if (req.url === "/") {
-    res.end("Welcome to our home page");
+    return res.end("Welcome to our home page");
   } else if (req.url === "/about") {
-    res.end("Here is our short history");
+    return res.end("Here is our short history");
   } else {
-    res.end(`
+    return res.end(`
         <h1>Oops!</h1>
         <p>We can't seem to find the page you are looking for</p>
         <a href="/">back home</a>
@@ -31,4 +31,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(3000);
+server.listen(3000, () => {
+  console.log('Server is listening on port 3000...');
+});
