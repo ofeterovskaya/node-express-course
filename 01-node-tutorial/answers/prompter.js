@@ -63,7 +63,10 @@ const server = http.createServer((req, res) => {
     res.end(form());
   }
 });
-
+// Log each request
+server.on("request", (req) => {  
+  console.log("event received: ", req.method, req.url);  
+});  
 // Start the server
 server.listen(3000);
 console.log('The server is listening on port 3000.');
