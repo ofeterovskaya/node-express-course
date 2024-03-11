@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Web Page</h1>
+    <p>This is a simple HTML page.</p>
+    <button id="loadProducts">Load Products</button>
+    <div id="products"></div>
+
+
+    <script>
+        document.getElementById('loadProducts').addEventListener('click', async () => {
+          const response = await fetch('/api/v1/products');
+          const products = await response.json();
+          const productsDiv = document.getElementById('products');
+          productsDiv.innerHTML = '';
+          products.forEach((product) => {
+            const productDiv = document.createElement('div');
+            productDiv.textContent = `Name: ${product.name}, Price: ${product.price}`;
+            productsDiv.appendChild(productDiv);
+          });
+        });
+        </script>
+</body>
+</html>
