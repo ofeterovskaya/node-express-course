@@ -9,19 +9,32 @@
     <button id="loadProducts">Load Products</button>
     <div id="products"></div>
 
+    <script type="module">
+        const loadProductsButton = document.getElementById('loadProducts');
+        const productsDiv = document.getElementById('products');
 
-    <script>
-        document.getElementById('loadProducts').addEventListener('click', async () => {
-          const response = await fetch('/api/v1/products');
-          const products = await response.json();
-          const productsDiv = document.getElementById('products');
-          productsDiv.innerHTML = '';
-          products.forEach((product) => {
-            const productDiv = document.createElement('div');
-            productDiv.textContent = `Name: ${product.name}, Price: ${product.price}`;
-            productsDiv.appendChild(productDiv);
-          });
-        });
-        </script>
+        if (loadProductsButton && productsDiv) {
+            loadProductsButton.addEventListener('click', async () => {
+              try {
+                const response = await fetch('/api/v1/products');
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                const products = await response.json();
+                productsDiv.innerHTML = '';
+                products.forEach((product) => {
+                  const productDiv = document.createElement('div');
+                  productDiv.textContent = `Name: ${product.name}, Price: ${product.price}`;
+                  productsDiv.appendChild(productDiv);
+                });
+              } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+                productsDiv.innerHTML = 'Unable to load products, please try again later.';
+              }
+            });
+        } else {
+            console.error('Could not find the loadProducts button or the products div');
+        }
+    </script>
 </body>
 </html>
