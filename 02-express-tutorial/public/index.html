@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Web Page</h1>
+    <p>This is a simple HTML page.</p>
+    <button id="loadProducts">Load Products</button>
+    <div id="products"></div>
+
+    <script type="module">
+        const loadProductsButton = document.getElementById('loadProducts');
+        const productsDiv = document.getElementById('products');
+
+        if (loadProductsButton && productsDiv) {
+            loadProductsButton.addEventListener('click', async () => {
+              try {
+                const response = await fetch('/api/v1/products');
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                const products = await response.json();
+                productsDiv.innerHTML = '';
+                products.forEach((product) => {
+                  const productDiv = document.createElement('div');
+                  productDiv.textContent = `Name: ${product.name}, Price: ${product.price}`;
+                  productsDiv.appendChild(productDiv);
+                });
+              } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+                productsDiv.innerHTML = 'Unable to load products, please try again later.';
+              }
+            });
+        } else {
+            console.error('Could not find the loadProducts button or the products div');
+        }
+    </script>
+</body>
+</html>
