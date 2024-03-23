@@ -8,6 +8,16 @@ const {
     deletePerson,
 } = require("../controlers/people");
 
+//better way
+router.route('/').get(getPeople).post(createPerson);
+router.route('/postman').post(createPersonPostman);
+router.route('/update/:id').put(updatePerson);
+router.route('/delete/:id').delete(deletePerson);
+
+module.exports = router;
+
+
+//leave it here for learning purposes
 //1st way
 // //get method HTTP
 // router.get('/',getPeople)
@@ -20,8 +30,6 @@ const {
 // router.delete("/:id",deletePerson);
 
 //2nd way
-router.route('/').get(getPeople).post(createPerson);
-router.route('/postman').post(createPersonPostman);
-router.route('/:id').put(updatePerson).delete(deletePerson);
-
-module.exports = router;
+// router.route('/').get(getPeople).post(createPerson);
+// router.route('/postman').post(createPersonPostman);
+// router.route('/:id').put(updatePerson).delete(deletePerson);

@@ -8,6 +8,6 @@ const authorize = (req, res, next) => {
         res.status(401).send('Unauthorized');
     }
     console.log("authorize");
-    next();
+    
 }
 module.exports = authorize;
