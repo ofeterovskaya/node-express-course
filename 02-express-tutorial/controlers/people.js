@@ -47,7 +47,7 @@ const deletePerson = (req, res) => {
             .json({ message: "Person not found" });
     }
     people.splice(personIndex, 1); 
-    return res.status(200).json({ success: true, data: newPeople });
+    return res.status(200).json({ success: true, data: people });
 }
 
 module.exports = {
