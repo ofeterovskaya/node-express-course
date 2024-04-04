@@ -1,0 +1,16 @@
+Quickly explain how middleware is used in an Express application.
+Middleware functions can be used to perform tasks like parsing incoming requests, adding headers, handling authentication, and handling errors.
+
+What does CRUD stand for?
+CRUD stands for Create, Read, Update, and Delete. These are the four basic operations that can be performed with most persistent storage systems.
+
+You are careful to store your sensitive information in a .env file.
+How do you get your app to access the information in the .env file?
+We can use the dotenv package to load the variables from the .env file into process.env.
+
+How do you protect the contents of the .env file so that it is not stored in your Github repository?
+We can add .env to your .gitignore file to prevent Git from tracking it. This way, the .env file will
+ not be included when we push our code to the GitHub repository. Here's how a .gitignore file might looks:
+ node_modules/
+.env
+This .gitignore file tells Git to ignore the node_modules directory and the .env file.
