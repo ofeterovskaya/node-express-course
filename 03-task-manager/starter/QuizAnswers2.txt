@@ -10,6 +10,9 @@ const getTask = asyncWrapper(async (req, res, next) => {
   if (!task) {  
     // your code here  
     const err = new CustomAPIError('No task found with the given id', 404);
+
+    //note to me we can  throw this error since it's being handled within the asyncWrapper middleware function
+    return next(new CustomAPIError(`Task with ID ${taskID} not found`, 404));
     return next(err);
   }  
   res.status(200).json({ task });  
